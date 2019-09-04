@@ -23,15 +23,16 @@ var pathSum = function(root, sum) {
             return ;
         }
         tmp.push(root.val);
-        console.log(tmp)
         if(root.left == null && root.right == null){
             if(sum == root.val)
                 ans.push([...tmp]);
             tmp.pop();
             return;
         }
-        pathSum(root.left, sum-root.val);
-        pathSum(root.roght, sum-root.val);
+        
+        backtrace(root.left, sum-root.val);
+        backtrace(root.right, sum-root.val);
+        tmp.pop();
     }
     backtrace(root, sum);
     return ans;
